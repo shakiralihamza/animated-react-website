@@ -5,7 +5,7 @@ import useWebAnimations from "@wellyshen/use-web-animations";
 import useOnScreen from "../hooks/onScreen";
 
 const Footer = () => {
-    const elementDuration = 400;
+    const elementDuration = 1000;
 
     const element1 = useWebAnimations({
         keyframes: [
@@ -22,7 +22,7 @@ const Footer = () => {
             {transform: 'translateY(0px)'},
         ],
         animationOptions: {
-            duration: elementDuration + 100,
+            duration: elementDuration + 300,
             fill: 'forwards',
             easing: "ease-in-out",
         },
@@ -32,7 +32,7 @@ const Footer = () => {
             {transform: 'translateY(0px)'},
         ],
         animationOptions: {
-            duration: elementDuration + 200,
+            duration: elementDuration + 500,
             fill: 'forwards',
             easing: "ease-in-out",
         },

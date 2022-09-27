@@ -11,48 +11,52 @@ import useOnScreen from "../hooks/onScreen";
 const Features = () => {
     const main = useRef();
     const isVisible = useOnScreen(main);
+    const animDuration = 800;
+    const animDelay = 300;
 
     const iconAnimationOptions = {
         keyframes: [
-            {transform: 'translateY(0px)'},
+            {transform: 'translateY(0px)', opacity: 1},
         ],
         animationOptions: {
-            duration: 400,
+            duration: animDuration,
             fill: 'forwards',
             easing: "cubic-bezier(0,.1,.58,.95)",
-
+            delay: animDelay
         },
     }
     const titleAnimationOptions = {
         keyframes: [
-            {transform: 'translateY(0px)'},
+            {transform: 'translateY(0px)', opacity: 1},
         ],
         animationOptions: {
-            duration: 400,
+            duration: animDuration,
             fill: 'forwards',
             easing: "cubic-bezier(0,.1,.58,.95)",
+            delay: animDelay
 
         },
     }
     const descriptionAnimationOptions = {
         keyframes: [
-            {transform: 'translateY(0px)'},
+            {transform: 'translateY(0px)', opacity: 1},
         ],
         animationOptions: {
-            duration: 400,
+            duration: animDuration,
             fill: 'forwards',
             easing: "ease-in-out",
+            delay: animDelay
         },
     }
     const iconContainer1Ref = useWebAnimations(iconAnimationOptions)
     const title1Ref = useWebAnimations(titleAnimationOptions)
     const description1Ref = useWebAnimations(descriptionAnimationOptions)
-    const iconContainer2Ref = useWebAnimations(iconAnimationOptions)
-    const title2Ref = useWebAnimations(titleAnimationOptions)
-    const description2Ref = useWebAnimations(descriptionAnimationOptions)
-    const iconContainer3Ref = useWebAnimations(iconAnimationOptions)
-    const title3Ref = useWebAnimations(titleAnimationOptions)
-    const description3Ref = useWebAnimations(descriptionAnimationOptions)
+    const iconContainer2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
+    const title2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
+    const description2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
+    const iconContainer3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
+    const title3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
+    const description3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
 
     const icon1Ref = useWebAnimations({
         keyframes: [
@@ -176,18 +180,18 @@ const Feature = ({icon, title, description, iconContainerRef, titleRef, descript
     return (
         <Paper elevation={0} sx={{width: '100%', height: '100%', borderRadius: '20px'}}>
             <Stack spacing={2} justifyContent={'center'} alignItems={'center'} sx={{height: '100%'}}>
-                <Box ref={iconContainerRef} sx={{transform:'translateY(15px)'}}>
+                <Box ref={iconContainerRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <IconButton size={'large'} sx={{backgroundColor: '#f3f3f3 !important'}} disabled>
                         {icon}
                     </IconButton>
                 </Box>
-                <Box ref={titleRef} sx={{transform:'translateY(15px)'}}>
+                <Box ref={titleRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'h6'} fontWeight={500} align={'center'}>
                         {title}
 
                     </Typography>
                 </Box>
-                <Box ref={descriptionRef} sx={{transform:'translateY(15px)'}}>
+                <Box ref={descriptionRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'body2'} align={'center'} px={3}>
                         {description}
 

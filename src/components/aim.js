@@ -10,14 +10,16 @@ const Aim = () => {
     const isVisible = useOnScreen(main);
 
     const imageBorderRadius = '8px';
-    const elementDuration = 400;
-    const imageTranslate = 10;
+    const elementDuration = 800;
+    const imageDuration = 1000;
+    const imageTranslate = 20;
+
     const imageAnimationOptions = {
         keyframes: [
             {transform: 'translateX(0px) translateY(0px)'},
         ],
         animationOptions: {
-            duration: 700,
+            duration: imageDuration,
             fill: 'forwards',
             easing: "cubic-bezier(0,.1,.58,.95)",
         }
