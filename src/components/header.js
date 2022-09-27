@@ -1,5 +1,6 @@
 import React from 'react';
 import {Box, Button, Container, Grid, Stack, Typography} from "@mui/material";
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 const menuItems = [
     'Home',
@@ -11,11 +12,12 @@ const menuItems = [
 ];
 
 const Header = () => (
-<Box sx={{position:'fixed', top:0, width:'100%', bgcolor:'rgba(255,255,255,0.98)'}}>
+<Box sx={{position:'fixed', top:0, width:'100%', bgcolor:'rgba(255,255,255,0.98)', zIndex: 999}}>
     <Container maxWidth={'lg'} sx={{height: '50px' }}>
         <Grid container justifyContent={'space-between'} alignItems={'center'} sx={{height: '100%'}}>
             <Grid item xs='auto'>
-                <Stack direction={'row'}>
+                <Stack direction={'row'} alignItems={'center'}>
+                    <BarChartIcon color={'primary'} fontSize={'large'}/>
                     <Typography variant={'h5'} sx={{fontWeight: '200'}}>touchstream</Typography>
                 </Stack>
             </Grid>

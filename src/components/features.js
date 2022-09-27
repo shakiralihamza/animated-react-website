@@ -1,12 +1,120 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Box, Button, Container, Grid, IconButton, Paper, Stack, Typography} from "@mui/material";
 import PublicIcon from '@mui/icons-material/Public';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EastIcon from '@mui/icons-material/East';
+import useWebAnimations from "@wellyshen/use-web-animations";
+import useOnScreen from "../hooks/onScreen";
 
 
 const Features = () => {
+    const main = useRef();
+    const isVisible = useOnScreen(main);
+
+    const iconAnimationOptions = {
+        keyframes: [
+            {transform: 'translateY(0px)'},
+        ],
+        animationOptions: {
+            duration: 400,
+            fill: 'forwards',
+            easing: "cubic-bezier(0,.1,.58,.95)",
+
+        },
+    }
+    const titleAnimationOptions = {
+        keyframes: [
+            {transform: 'translateY(0px)'},
+        ],
+        animationOptions: {
+            duration: 400,
+            fill: 'forwards',
+            easing: "cubic-bezier(0,.1,.58,.95)",
+
+        },
+    }
+    const descriptionAnimationOptions = {
+        keyframes: [
+            {transform: 'translateY(0px)'},
+        ],
+        animationOptions: {
+            duration: 400,
+            fill: 'forwards',
+            easing: "ease-in-out",
+        },
+    }
+    const iconContainer1Ref = useWebAnimations(iconAnimationOptions)
+    const title1Ref = useWebAnimations(titleAnimationOptions)
+    const description1Ref = useWebAnimations(descriptionAnimationOptions)
+    const iconContainer2Ref = useWebAnimations(iconAnimationOptions)
+    const title2Ref = useWebAnimations(titleAnimationOptions)
+    const description2Ref = useWebAnimations(descriptionAnimationOptions)
+    const iconContainer3Ref = useWebAnimations(iconAnimationOptions)
+    const title3Ref = useWebAnimations(titleAnimationOptions)
+    const description3Ref = useWebAnimations(descriptionAnimationOptions)
+
+    const icon1Ref = useWebAnimations({
+        keyframes: [
+            {transform: 'rotate(0deg)'},
+            {transform: 'rotate(360deg)'},
+        ],
+        animationOptions: {
+            duration:3000,
+            fill: 'forwards',
+            iterations: 100000,
+            easing: "ease-in-out",
+
+        }
+    })
+    const icon2Ref = useWebAnimations({
+        keyframes: [
+            {transform: 'translateX(-10px) translateY(10px)', opacity: 0},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(0px) translateY(0px)', opacity: 1},
+            {transform: 'translateX(10px) translateY(-10px)', opacity:0},
+        ],
+        animationOptions: {
+            duration:2000,
+            fill: 'forwards',
+            iterations: 100000,
+            // easing: "ease-in",
+
+        }
+    })
+    const icon3Ref = useWebAnimations({
+        keyframes: [
+            {transform: 'rotate(0deg)'},
+            {transform: 'rotate(360deg)'},
+        ],
+        animationOptions: {
+            duration:3000,
+            fill: 'forwards',
+            iterations: 100000,
+            easing: "ease-in-out",
+
+        }
+    })
+
+    useEffect(() => {
+        if (isVisible) {
+            iconContainer1Ref.getAnimation().play();
+            title1Ref.getAnimation().play();
+            description1Ref.getAnimation().play();
+            iconContainer2Ref.getAnimation().play();
+            title2Ref.getAnimation().play();
+            description2Ref.getAnimation().play();
+            iconContainer3Ref.getAnimation().play();
+            title3Ref.getAnimation().play();
+            description3Ref.getAnimation().play();
+        }
+    }, [isVisible])
+
     return (
         <>
             <Container maxWidth={'lg'} sx={{height: '100vh'}}>
@@ -17,10 +125,13 @@ const Features = () => {
                 <Typography variant={'h4'} align='center' fontWeight={500} mt={1} mb={4}>
                     We believe we can save more life with you
                 </Typography>
-                <Grid container justifyContent={'center'} spacing={2} sx={{height: '250px'}}>
-                    <Grid item xs={4}>
+                <Grid container justifyContent={'center'} spacing={2} sx={{height: '250px'}} >
+                    <Grid item xs={4} ref={main}>
                         <Feature
-                            icon={<PublicIcon color={'secondary'} fontSize={'large'}/>}
+                            iconContainerRef={iconContainer1Ref.ref}
+                            titleRef={title1Ref.ref}
+                            descriptionRef={description1Ref.ref}
+                            icon={<PublicIcon ref={icon1Ref.ref} color={'secondary'} fontSize={'large'}/>}
                             title={'Transparent'}
                             description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus\n' +
                                 '                            eu erat rhoncus, a tristique elit dictum'}
@@ -28,7 +139,10 @@ const Features = () => {
                     </Grid>
                     <Grid item xs={4}>
                         <Feature
-                            icon={<ArrowOutwardIcon color={'secondary'} fontSize={'large'}/>}
+                            iconContainerRef={iconContainer2Ref.ref}
+                            titleRef={title2Ref.ref}
+                            descriptionRef={description2Ref.ref}
+                            icon={<ArrowOutwardIcon ref={icon2Ref.ref} color={'secondary'} fontSize={'large'}/>}
                             title={'Quick Fundraise'}
                             description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus\n' +
                                 '                            eu erat rhoncus, a tristique elit dictum'}
@@ -36,7 +150,10 @@ const Features = () => {
                     </Grid>
                     <Grid item xs={4}>
                         <Feature
-                            icon={<AccessTimeIcon color={'secondary'} fontSize={'large'}/>}
+                            iconContainerRef={iconContainer3Ref.ref}
+                            titleRef={title3Ref.ref}
+                            descriptionRef={description3Ref.ref}
+                            icon={<AccessTimeIcon ref={icon3Ref.ref} color={'secondary'} fontSize={'large'}/>}
                             title={'Real Time'}
                             description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus\n' +
                                 '                            eu erat rhoncus, a tristique elit dictum'}
@@ -54,23 +171,22 @@ const Features = () => {
     );
 }
 
-const Feature = ({icon, title, description}) => {
+const Feature = ({icon, title, description, iconContainerRef, titleRef, descriptionRef}) => {
     return (
         <Paper elevation={0} sx={{width: '100%', height: '100%', borderRadius: '20px'}}>
             <Stack spacing={2} justifyContent={'center'} alignItems={'center'} sx={{height: '100%'}}>
-                <Box>
+                <Box ref={iconContainerRef} sx={{transform:'translateY(15px)'}}>
                     <IconButton size={'large'} sx={{backgroundColor: '#f3f3f3 !important'}} disabled>
-
                         {icon}
                     </IconButton>
                 </Box>
-                <Box>
+                <Box ref={titleRef} sx={{transform:'translateY(15px)'}}>
                     <Typography variant={'h6'} fontWeight={500} align={'center'}>
                         {title}
 
                     </Typography>
                 </Box>
-                <Box>
+                <Box ref={descriptionRef} sx={{transform:'translateY(15px)'}}>
                     <Typography variant={'body2'} align={'center'} px={3}>
                         {description}
 
