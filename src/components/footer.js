@@ -45,6 +45,7 @@ const Footer = () => {
             element2.getAnimation().play();
             element3.getAnimation().play();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible])
     return(
         <Box sx={{height:'350px', bgcolor:'#101125'}}>

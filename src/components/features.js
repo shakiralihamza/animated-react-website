@@ -113,6 +113,7 @@ const Features = () => {
             title3Ref.getAnimation().play();
             description3Ref.getAnimation().play();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible])
 
     return (

@@ -64,6 +64,7 @@ const Home = () => {
             imgR.getAnimation().play();
             imgBR.getAnimation().play();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible])
 
     return (
