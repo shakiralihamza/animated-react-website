@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
-import {Box, Button, Container, Stack, Typography} from "@mui/material";
+import {Box, Button, Container, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import useWebAnimations from "@wellyshen/use-web-animations";
 import useOnScreen from "../hooks/onScreen";
 
 const Footer = () => {
+    const theme = useTheme();
+    const isSmallerThanMD = useMediaQuery(theme.breakpoints.down('md'));
+
     const elementDuration = 1000;
 
     const element1 = useWebAnimations({
@@ -51,8 +54,12 @@ const Footer = () => {
         <Box sx={{height:'350px', bgcolor:'#101125'}}>
             <Container maxWidth={'lg'} sx={{height: '100%'}}>
                 <Stack justifyContent={'center'} alignItems={'center'} spacing={3} sx={{height: '100%'}}>
-                    <Typography variant={'h2'} ref={element1.ref} fontWeight={600} sx={{color:'white', transform:'translateY(20px)', opacity:0.5}}>Ready to go live?</Typography>
-                    <Typography variant={'body2'} ref={element2.ref} sx={{color:'white', width:'700px', transform:'translateY(20px)'}} align={'center'}>
+                    <Typography variant={'h2'} ref={element1.ref} fontWeight={600} sx={{color:'white', transform:'translateY(20px)', opacity:0.5,
+                    ...isSmallerThanMD && {
+                        fontSize: '2.5rem',
+                    }
+                    }}>Ready to go live?</Typography>
+                    <Typography variant={'body2'} ref={element2.ref} sx={{color:'white', width: {md:'60%'}, transform:'translateY(20px)'}} align={'center'}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus
                         eu erat rhoncus, a tristique elit dictum
                         Lorem ipsum dolor sit amet, consectetur

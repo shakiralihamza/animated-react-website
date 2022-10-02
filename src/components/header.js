@@ -37,7 +37,7 @@ const Header = () => {
 
     return (
         <Box sx={{position: 'fixed', top: 0, width: '100%', bgcolor: 'rgba(255,255,255,0.98)', zIndex: 999}}>
-            <Container maxWidth={'lg'} sx={{height: '50px'}}>
+            <Container maxWidth={'lg'} sx={{height: '50px'}} >
                 <Grid container justifyContent={'space-between'} alignItems={'center'} sx={{height: '100%'}}>
                     <Grid item xs='auto'>
                         <Stack direction={'row'} alignItems={'center'}>
@@ -45,7 +45,7 @@ const Header = () => {
                             <Typography variant={'h5'} sx={{fontWeight: '200'}}>touchstream</Typography>
                         </Stack>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={0} sm={6}>
                         {isSmallerThanMD ?
                             (<Drawer
                                 anchor={"left"}

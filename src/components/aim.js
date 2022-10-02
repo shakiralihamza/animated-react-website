@@ -1,11 +1,14 @@
 import React, {useEffect, useRef} from 'react';
-import {Box, Container, Grid, Stack, Typography} from "@mui/material";
+import {Box, Container, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Ott2 from '../assets/images/ott2.jpg';
 import Ott3 from '../assets/images/ott3.jpg';
 import useWebAnimations from "@wellyshen/use-web-animations";
 import useOnScreen from "../hooks/onScreen";
 
 const Aim = () => {
+    const theme = useTheme();
+    const isSmallerThanMD = useMediaQuery(theme.breakpoints.down('md'));
+
     const main = useRef();
     const isVisible = useOnScreen(main);
 
@@ -77,7 +80,7 @@ const Aim = () => {
         <>
             <Container maxWidth={'lg'} sx={{height: '100vh'}}>
                 <Grid container justifyContent={'space-between'} pt={15}>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Stack ref={main}>
                             <Box ref={element0.ref} sx={{
                                 transform: 'scale(0.5)',
@@ -87,11 +90,22 @@ const Aim = () => {
                             }} mb={0.5}
                                  ml={0.7}/>
                             <Box ref={element1.ref} sx={{transform: 'translateY(20px)'}}>
-                                <Typography variant={'h2'} lineHeight={0.8} mt={1} fontWeight={600}>Built
-                                    to</Typography>
-                                <Typography variant={'h2'} lineHeight={0.9} fontWeight={600}>empower</Typography>
+                                <Typography variant={'h2'} lineHeight={0.8} mt={1} fontWeight={600} sx={{
+                                    ...isSmallerThanMD && {
+                                        fontSize: '2.5rem'
+                                    }
+                                }}>Built to</Typography>
+                                <Typography variant={'h2'} lineHeight={0.9} fontWeight={600} sx={{
+                                    ...isSmallerThanMD && {
+                                        fontSize: '2.5rem'
+                                    }
+                                }}>empower</Typography>
                                 <Typography variant={'h2'} lineHeight={1} fontWeight={600}
-                                            color={'primary'}>everyone</Typography>
+                                            color={'primary'} sx={{
+                                    ...isSmallerThanMD && {
+                                        fontSize: '2.5rem'
+                                    }
+                                }}>everyone</Typography>
                             </Box>
                             <Typography ref={element2.ref} sx={{transform: 'translateY(20px)'}} variant={'body1'} mt={3}
                                         pl={0.5}>We provide small industries, organizations,
@@ -99,18 +113,24 @@ const Aim = () => {
                             </Typography>
                         </Stack>
                     </Grid>
-                    <Grid item xs={'auto'}>
-                        <Grid container spacing={2}>
-                            <Grid item>
+                    <Grid item xs={12} md={'auto'}>
+                        <Grid container spacing={2} sx={{
+                            ...isSmallerThanMD && {
+                                py:2
+                            }
+                        }}>
+                            <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-end'} spacing={1}>
                                     <Box ref={imgTL.ref}
                                          sx={{transform: `translateX(-${imageTranslate}px) translateY(-${imageTranslate}px)`}}><img
                                         src={Ott3} alt="img" style={{
-                                        height: '250px', borderRadius: imageBorderRadius, borderBottomRightRadius: 0
+                                        ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
+                                        borderRadius: imageBorderRadius, borderBottomRightRadius: 0
                                     }}/></Box>
                                     <Box ref={imgBL.ref} sx={{transform: `translateX(-${0}px) translateY(${imageTranslate+5}px)`}}>
                                         <img src={Ott2} alt="img"
                                              style={{
+                                                 display: isSmallerThanMD ? 'none' : 'block',
                                                  height: '150px',
                                                  borderRadius: imageBorderRadius,
                                                  borderTopRightRadius: 0
@@ -118,9 +138,10 @@ const Aim = () => {
                                     </Box>
                                 </Stack>
                             </Grid>
-                            <Grid item>
+                            <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-start'} spacing={1.5}>
                                     <Box ref={imgTR.ref} mt={7} sx={{
+                                        display: isSmallerThanMD ? 'none' : 'block',
                                         transform: `translateX(${imageTranslate}px) translateY(-${0}px)`,
                                         height: '50px',
                                         bgcolor: 'secondary.light',
@@ -130,7 +151,8 @@ const Aim = () => {
                                     }}/>
                                     <Box ref={imgBR.ref} sx={{transform: `translateX(${imageTranslate-5}px) translateY(${imageTranslate+5}px)`,}}>
                                         <img src={Ott2} alt="img" style={{
-                                            height: '250px', borderRadius: '20px', borderBottomLeftRadius: 0
+                                            ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
+                                            borderRadius: '20px', borderBottomLeftRadius: 0
                                         }}/>
                                     </Box>
                                 </Stack>

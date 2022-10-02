@@ -101,8 +101,8 @@ const Home = () => {
                             <Typography variant={'body1'} mt={1} pl={0.5} sx={{
                                 ...isSmallerThanMD&&{
                                     fontSize: '0.9rem',
-                                    display:'inline-block'
-                                }
+                                },
+                                width:'100vw'
                             }}
                             >
                                 Find OTT delivery issues before your viewers are impacted
