@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Box, Button, Container, Grid, Stack, Typography} from "@mui/material";
+import {Box, Button, Container, Grid, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Netflix from '../assets/images/netflix.jpg';
 import Ott1 from '../assets/images/ott1.jpg';
 import Ott2 from '../assets/images/ott2.jpg';
@@ -9,6 +9,9 @@ import useWebAnimations from "@wellyshen/use-web-animations";
 import useOnScreen from "../hooks/onScreen";
 
 const Home = () => {
+    const theme = useTheme();
+    const isSmallerThanMD = useMediaQuery(theme.breakpoints.down('md'));
+
     const main = useRef();
     const isVisible = useOnScreen(main);
 
@@ -85,9 +88,23 @@ const Home = () => {
                                     built for operations by operations experts
                                 </Box>
                             </Typography>
-                            <Typography variant={'h2'} mt={1} fontWeight={600}>Virtual NOC OTT</Typography>
-                            <Typography variant={'h2'} fontWeight={600} color={'primary'}>Operations Hub</Typography>
-                            <Typography variant={'body1'} mt={1} pl={0.5}>
+                            <Typography variant={'h2'} mt={1} fontWeight={600} sx={{
+                                ...isSmallerThanMD&&{
+                                    fontSize: '2.5rem'
+                                }
+                            }}>Virtual NOC OTT</Typography>
+                            <Typography variant={'h2'} fontWeight={600} color={'primary'} sx={{
+                                ...isSmallerThanMD&&{
+                                    fontSize: '2.5rem'
+                                }
+                            }}>Operations Hub</Typography>
+                            <Typography variant={'body1'} mt={1} pl={0.5} sx={{
+                                ...isSmallerThanMD&&{
+                                    fontSize: '0.9rem',
+                                    display:'inline-block'
+                                }
+                            }}
+                            >
                                 Find OTT delivery issues before your viewers are impacted
                             </Typography>
                         </Stack>
@@ -96,9 +113,9 @@ const Home = () => {
                             Request Demo
                         </Button>
                     </Grid>
-                    <Grid item xs={'auto'}>
-                        <Grid container spacing={2}>
-                            <Grid item>
+                    <Grid item xs={12} md={'auto'} mt={{xs:5, md:0}}>
+                        <Grid container spacing={2} alignItems={'center'} justifyContent={'center'}>
+                            <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-end'} spacing={1}>
                                     <Box
                                         ref={imgTL.ref}
@@ -106,7 +123,7 @@ const Home = () => {
                                     >
                                         <img src={Ott2} alt="img"
                                              style={{
-                                                 height: '250px',
+                                                 ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
                                                  borderRadius: imageBorderRadius,
                                                  borderBottomRightRadius: 0
                                              }}
@@ -114,7 +131,10 @@ const Home = () => {
                                     </Box>
                                     <Box
                                         ref={imgBL.ref}
-                                        sx={{transform: `translateX(-${imageTranslate}px) translateY(${imageTranslate}px)`}}
+                                        sx={{
+                                            transform: `translateX(-${imageTranslate}px) translateY(${imageTranslate}px)`,
+                                            display: isSmallerThanMD ? 'none' : 'block',
+                                        }}
                                     >
                                         <img src={Netflix} alt="img"
                                              style={{
@@ -126,11 +146,12 @@ const Home = () => {
                                     </Box>
                                 </Stack>
                             </Grid>
-                            <Grid item>
+                            <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-start'} spacing={1.5}>
                                     <Box ref={imgTR.ref} sx={{
                                         transform: `translateX(${imageTranslate}px) translateY(-${imageTranslate}px)`,
                                         height: '80px',
+                                        display: isSmallerThanMD ? 'none' : 'block',
                                         bgcolor: '#c99bfa',
                                         width: '80px',
                                         borderRadius: imageBorderRadius,
@@ -141,14 +162,17 @@ const Home = () => {
                                         sx={{transform: `translateX(${imageTranslate}px) translateY(${imageTranslate}px)`}}
                                     >
                                         <img src={Ott3} alt="img" style={{
-                                            height: '150px',
+                                            ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
                                             borderRadius: '20px',
                                             borderBottomLeftRadius: 0
                                         }}/>
                                     </Box>
                                     <Box
                                         ref={imgBR.ref}
-                                        sx={{transform: `translateX(${imageTranslate}px) translateY(${imageTranslate}px)`}}
+                                        sx={{
+                                            transform: `translateX(${imageTranslate}px) translateY(${imageTranslate}px)`,
+                                            display: isSmallerThanMD ? 'none' : 'block',
+                                        }}
                                     >
                                         <img src={Ott1} alt="img" style={{
                                             height: '60px',
