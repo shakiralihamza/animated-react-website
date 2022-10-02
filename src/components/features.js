@@ -1,5 +1,16 @@
 import React, {useEffect, useRef} from 'react';
-import {Box, Button, Container, Grid, IconButton, Paper, Stack, Typography} from "@mui/material";
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    IconButton,
+    Paper,
+    Stack,
+    Typography,
+    useMediaQuery,
+    useTheme
+} from "@mui/material";
 import PublicIcon from '@mui/icons-material/Public';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -9,6 +20,9 @@ import useOnScreen from "../hooks/onScreen";
 
 
 const Features = () => {
+    const theme = useTheme();
+    const isSmallerThanMD = useMediaQuery(theme.breakpoints.down('md'));
+
     const main = useRef();
     const isVisible = useOnScreen(main);
     const animDuration = 800;
@@ -87,7 +101,6 @@ const Features = () => {
             duration:2000,
             fill: 'forwards',
             iterations: 100000,
-            // easing: "ease-in",
 
         }
     })
@@ -122,16 +135,20 @@ const Features = () => {
 
     return (
         <>
-            <Container maxWidth={'lg'} sx={{height: '100vh'}}>
+            <Container maxWidth={'lg'} sx={{...!isSmallerThanMD&&{height: '100vh'}}}>
                 <Typography variant={'button'} component={'p'} pt={15} color={'secondary'} align={'center'}
                             sx={{textTransform: 'uppercase'}}>
                     Our Features
                 </Typography>
-                <Typography variant={'h4'} align='center' fontWeight={500} mt={1} mb={4}>
+                <Typography variant={'h4'} align='center' fontWeight={500} mt={1} mb={4} sx={{
+                    ...isSmallerThanMD && {
+                        fontSize: '1.5rem'
+                    }
+                }}>
                     We believe we can save more life with you
                 </Typography>
-                <Grid container justifyContent={'center'} spacing={2} sx={{height: '250px'}} >
-                    <Grid item xs={4} ref={main}>
+                <Grid container justifyContent={'center'} spacing={2} sx={{height: 'auto'}} py={5}>
+                    <Grid item xs={12} sm={6} md={4} ref={main}>
                         <Feature
                             iconContainerRef={iconContainer1Ref.ref}
                             titleRef={title1Ref.ref}
@@ -142,7 +159,7 @@ const Features = () => {
                                 '                            eu erat rhoncus, a tristique elit dictum'}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Feature
                             iconContainerRef={iconContainer2Ref.ref}
                             titleRef={title2Ref.ref}
@@ -153,7 +170,7 @@ const Features = () => {
                                 '                            eu erat rhoncus, a tristique elit dictum'}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Feature
                             iconContainerRef={iconContainer3Ref.ref}
                             titleRef={title3Ref.ref}
@@ -165,7 +182,7 @@ const Features = () => {
                         />
                     </Grid>
                 </Grid>
-                <Box mt={4} sx={{
+                <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',
                 }}>
@@ -179,7 +196,7 @@ const Features = () => {
 const Feature = ({icon, title, description, iconContainerRef, titleRef, descriptionRef}) => {
     return (
         <Paper elevation={0} sx={{width: '100%', height: '100%', borderRadius: '20px'}}>
-            <Stack spacing={2} justifyContent={'center'} alignItems={'center'} sx={{height: '100%'}}>
+            <Stack spacing={2} justifyContent={'center'} alignItems={'center'} py={2} sx={{height: '100%'}}>
                 <Box ref={iconContainerRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <IconButton size={'large'} sx={{backgroundColor: '#f3f3f3 !important'}} disabled>
                         {icon}
@@ -188,13 +205,11 @@ const Feature = ({icon, title, description, iconContainerRef, titleRef, descript
                 <Box ref={titleRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'h6'} fontWeight={500} align={'center'}>
                         {title}
-
                     </Typography>
                 </Box>
                 <Box ref={descriptionRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'body2'} align={'center'} px={3}>
                         {description}
-
                     </Typography>
                 </Box>
             </Stack>
