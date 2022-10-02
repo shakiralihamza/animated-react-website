@@ -94,18 +94,24 @@ const Aim = () => {
                                     ...isSmallerThanMD && {
                                         fontSize: '2.5rem'
                                     }
-                                }}>Built to</Typography>
+                                }}>
+                                    Built to
+                                </Typography>
                                 <Typography variant={'h2'} lineHeight={0.9} fontWeight={600} sx={{
                                     ...isSmallerThanMD && {
                                         fontSize: '2.5rem'
                                     }
-                                }}>empower</Typography>
+                                }}>
+                                    empower
+                                </Typography>
                                 <Typography variant={'h2'} lineHeight={1} fontWeight={600}
                                             color={'primary'} sx={{
                                     ...isSmallerThanMD && {
                                         fontSize: '2.5rem'
                                     }
-                                }}>everyone</Typography>
+                                }}>
+                                    everyone
+                                </Typography>
                             </Box>
                             <Typography ref={element2.ref} sx={{transform: 'translateY(20px)'}} variant={'body1'} mt={3}
                                         pl={0.5}>We provide small industries, organizations,
@@ -116,18 +122,20 @@ const Aim = () => {
                     <Grid item xs={12} md={'auto'}>
                         <Grid container spacing={2} sx={{
                             ...isSmallerThanMD && {
-                                py:2
+                                py: 2
                             }
                         }}>
                             <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-end'} spacing={1}>
                                     <Box ref={imgTL.ref}
-                                         sx={{transform: `translateX(-${imageTranslate}px) translateY(-${imageTranslate}px)`}}><img
-                                        src={Ott3} alt="img" style={{
-                                        ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
-                                        borderRadius: imageBorderRadius, borderBottomRightRadius: 0
-                                    }}/></Box>
-                                    <Box ref={imgBL.ref} sx={{transform: `translateX(-${0}px) translateY(${imageTranslate+5}px)`}}>
+                                         sx={{transform: `translateX(-${imageTranslate}px) translateY(-${imageTranslate}px)`}}>
+                                        <img src={Ott3} alt="img" style={{
+                                            ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
+                                            borderRadius: imageBorderRadius, borderBottomRightRadius: 0
+                                        }}/>
+                                    </Box>
+                                    <Box ref={imgBL.ref}
+                                         sx={{transform: `translateX(-${0}px) translateY(${imageTranslate + 5}px)`}}>
                                         <img src={Ott2} alt="img"
                                              style={{
                                                  display: isSmallerThanMD ? 'none' : 'block',
@@ -149,7 +157,8 @@ const Aim = () => {
                                         borderRadius: 0,
                                         borderTopRightRadius: '100%'
                                     }}/>
-                                    <Box ref={imgBR.ref} sx={{transform: `translateX(${imageTranslate-5}px) translateY(${imageTranslate+5}px)`,}}>
+                                    <Box ref={imgBR.ref}
+                                         sx={{transform: `translateX(${imageTranslate - 5}px) translateY(${imageTranslate + 5}px)`,}}>
                                         <img src={Ott2} alt="img" style={{
                                             ...(isSmallerThanMD ? {width: '100%'} : {height: '250px'}),
                                             borderRadius: '20px', borderBottomLeftRadius: 0

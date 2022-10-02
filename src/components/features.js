@@ -65,12 +65,30 @@ const Features = () => {
     const iconContainer1Ref = useWebAnimations(iconAnimationOptions)
     const title1Ref = useWebAnimations(titleAnimationOptions)
     const description1Ref = useWebAnimations(descriptionAnimationOptions)
-    const iconContainer2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
-    const title2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
-    const description2Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}})
-    const iconContainer3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
-    const title3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
-    const description3Ref = useWebAnimations({...iconAnimationOptions, animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}})
+    const iconContainer2Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}
+    })
+    const title2Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}
+    })
+    const description2Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 100}
+    })
+    const iconContainer3Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}
+    })
+    const title3Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}
+    })
+    const description3Ref = useWebAnimations({
+        ...iconAnimationOptions,
+        animationOptions: {...iconAnimationOptions.animationOptions, delay: animDelay + 200}
+    })
 
     const icon1Ref = useWebAnimations({
         keyframes: [
@@ -78,7 +96,7 @@ const Features = () => {
             {transform: 'rotate(360deg)'},
         ],
         animationOptions: {
-            duration:3000,
+            duration: 3000,
             fill: 'forwards',
             iterations: 100000,
             easing: "ease-in-out",
@@ -95,10 +113,10 @@ const Features = () => {
             {transform: 'translateX(0px) translateY(0px)', opacity: 1},
             {transform: 'translateX(0px) translateY(0px)', opacity: 1},
             {transform: 'translateX(0px) translateY(0px)', opacity: 1},
-            {transform: 'translateX(10px) translateY(-10px)', opacity:0},
+            {transform: 'translateX(10px) translateY(-10px)', opacity: 0},
         ],
         animationOptions: {
-            duration:2000,
+            duration: 2000,
             fill: 'forwards',
             iterations: 100000,
 
@@ -110,7 +128,7 @@ const Features = () => {
             {transform: 'rotate(360deg)'},
         ],
         animationOptions: {
-            duration:3000,
+            duration: 3000,
             fill: 'forwards',
             iterations: 100000,
             easing: "ease-in-out",
@@ -135,7 +153,7 @@ const Features = () => {
 
     return (
         <>
-            <Container maxWidth={'lg'} sx={{...!isSmallerThanMD&&{height: '100vh'}}}>
+            <Container maxWidth={'lg'} sx={{...!isSmallerThanMD && {height: '100vh'}}}>
                 <Typography variant={'button'} component={'p'} pt={15} color={'secondary'} align={'center'}
                             sx={{textTransform: 'uppercase'}}>
                     Our Features
@@ -186,7 +204,8 @@ const Features = () => {
                     display: 'flex',
                     justifyContent: 'center',
                 }}>
-                    <Button variant={'contained'} endIcon={<EastIcon sx={{fontSize:'13px !important'}}/>}>Fill the form</Button>
+                    <Button variant={'contained'} endIcon={<EastIcon sx={{fontSize: '13px !important'}}/>}>Fill the
+                        form</Button>
                 </Box>
             </Container>
         </>
@@ -197,17 +216,17 @@ const Feature = ({icon, title, description, iconContainerRef, titleRef, descript
     return (
         <Paper elevation={0} sx={{width: '100%', height: '100%', borderRadius: '20px'}}>
             <Stack spacing={2} justifyContent={'center'} alignItems={'center'} py={2} sx={{height: '100%'}}>
-                <Box ref={iconContainerRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
+                <Box ref={iconContainerRef} sx={{transform: 'translateY(15px)', opacity: 0.5}}>
                     <IconButton size={'large'} sx={{backgroundColor: '#f3f3f3 !important'}} disabled>
                         {icon}
                     </IconButton>
                 </Box>
-                <Box ref={titleRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
+                <Box ref={titleRef} sx={{transform: 'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'h6'} fontWeight={500} align={'center'}>
                         {title}
                     </Typography>
                 </Box>
-                <Box ref={descriptionRef} sx={{transform:'translateY(15px)', opacity: 0.5}}>
+                <Box ref={descriptionRef} sx={{transform: 'translateY(15px)', opacity: 0.5}}>
                     <Typography variant={'body2'} align={'center'} px={3}>
                         {description}
                     </Typography>

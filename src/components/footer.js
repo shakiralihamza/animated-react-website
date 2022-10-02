@@ -12,7 +12,7 @@ const Footer = () => {
 
     const element1 = useWebAnimations({
         keyframes: [
-            {transform: 'translateY(0px)', opacity:1},
+            {transform: 'translateY(0px)', opacity: 1},
         ],
         animationOptions: {
             duration: elementDuration,
@@ -50,23 +50,29 @@ const Footer = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible])
-    return(
-        <Box sx={{height:'350px', bgcolor:'#101125'}}>
+    return (
+        <Box sx={{height: '350px', bgcolor: '#101125'}}>
             <Container maxWidth={'lg'} sx={{height: '100%'}}>
                 <Stack justifyContent={'center'} alignItems={'center'} spacing={3} sx={{height: '100%'}}>
-                    <Typography variant={'h2'} ref={element1.ref} fontWeight={600} sx={{color:'white', transform:'translateY(20px)', opacity:0.5,
-                    ...isSmallerThanMD && {
-                        fontSize: '2.5rem',
-                    }
-                    }}>Ready to go live?</Typography>
-                    <Typography variant={'body2'} ref={element2.ref} sx={{color:'white', width: {md:'60%'}, transform:'translateY(20px)'}} align={'center'}>
+                    <Typography variant={'h2'} ref={element1.ref} fontWeight={600} sx={{
+                        color: 'white', transform: 'translateY(20px)', opacity: 0.5,
+                        ...isSmallerThanMD && {
+                            fontSize: '2.5rem',
+                        }
+                    }}>
+                        Ready to go live?
+                    </Typography>
+                    <Typography variant={'body2'} ref={element2.ref}
+                                sx={{color: 'white', width: {md: '60%'}, transform: 'translateY(20px)'}}
+                                align={'center'}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus
                         eu erat rhoncus, a tristique elit dictum
                         Lorem ipsum dolor sit amet, consectetur
                         Lorem ipsum dolor sit amet
                         Lorem ipsum dolor sit amet
                     </Typography>
-                    <Button ref={element3.ref} sx={{transform:'translateY(20px)'}} variant={'contained'} endIcon={<EastIcon sx={{fontSize:'13px !important'}}/>}>Get Started</Button>
+                    <Button ref={element3.ref} sx={{transform: 'translateY(20px)'}} variant={'contained'}
+                            endIcon={<EastIcon sx={{fontSize: '13px !important'}}/>}>Get Started</Button>
                 </Stack>
             </Container>
         </Box>

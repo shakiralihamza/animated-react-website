@@ -37,7 +37,7 @@ const Header = () => {
 
     return (
         <Box sx={{position: 'fixed', top: 0, width: '100%', bgcolor: 'rgba(255,255,255,0.98)', zIndex: 999}}>
-            <Container maxWidth={'lg'} sx={{height: '50px'}} >
+            <Container maxWidth={'lg'} sx={{height: '50px'}}>
                 <Grid container justifyContent={'space-between'} alignItems={'center'} sx={{height: '100%'}}>
                     <Grid item xs='auto'>
                         <Stack direction={'row'} alignItems={'center'}>
@@ -58,21 +58,13 @@ const Header = () => {
                                 <Box sx={{padding: '40px 40px'}}>
                                     <Stack direction={'column'} alignItems={'flex-start'} justifyContent={'center'}
                                            spacing={2}>
-                                        {
-                                            menuItems.map((item, index) => (
-                                                <NavButton name={item} key={index}/>
-                                            ))
-                                        }
+                                        <Nav menuItems={menuItems}/>
                                     </Stack>
                                 </Box>
                             </Drawer>)
                             :
                             <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={2}>
-                                {
-                                    menuItems.map((item, index) => (
-                                        <NavButton name={item} key={index}/>
-                                    ))
-                                }
+                                <Nav menuItems={menuItems}/>
                             </Stack>
                         }
                     </Grid>
@@ -100,6 +92,11 @@ const Header = () => {
     );
 }
 
+const Nav = ({menuItems}) => (
+    menuItems.map((item, index) => (
+        <NavButton name={item} key={index}/>
+    ))
+)
 const NavButton = ({name}) => (
     <Button variant={'text'} color={'inherit'} sx={{fontSize: '0.8rem', textTransform: 'none'}}>{name}</Button>
 
