@@ -75,7 +75,7 @@ const Home = () => {
         <>
             <Container maxWidth={'lg'} sx={{height: '100vh'}} ref={main}>
                 <Grid container justifyContent={'space-between'} pt={15}>
-                    <Grid item xs={'auto'}>
+                    <Grid item xs={12} md={4}>
                         <Stack ref={element1.ref} sx={{mt: '50px'}}>
                             <Typography variant={'button'} fontSize={10} color={'primary'}
                                         sx={{textTransform: 'uppercase'}}>
@@ -89,20 +89,20 @@ const Home = () => {
                                 </Box>
                             </Typography>
                             <Typography variant={'h2'} mt={1} fontWeight={600} sx={{
-                                ...isSmallerThanMD&&{
+                                ...isSmallerThanMD && {
                                     fontSize: '2.5rem'
                                 }
                             }}>Virtual NOC OTT</Typography>
                             <Typography variant={'h2'} fontWeight={600} color={'primary'} sx={{
-                                ...isSmallerThanMD&&{
+                                ...isSmallerThanMD && {
                                     fontSize: '2.5rem'
                                 }
                             }}>Operations Hub</Typography>
                             <Typography variant={'body1'} mt={1} pl={0.5} sx={{
-                                ...isSmallerThanMD&&{
+                                ...isSmallerThanMD && {
                                     fontSize: '0.9rem',
                                 },
-                                width:'100vw'
+                                width: '100vw'
                             }}
                             >
                                 Find OTT delivery issues before your viewers are impacted
@@ -113,8 +113,12 @@ const Home = () => {
                             Request Demo
                         </Button>
                     </Grid>
-                    <Grid item xs={12} md={'auto'} mt={{xs:5, md:0}}>
-                        <Grid container spacing={2} alignItems={'center'} justifyContent={'center'}>
+                    <Grid item xs={12} md={'auto'}>
+                        <Grid container spacing={2} sx={{
+                            ...isSmallerThanMD && {
+                                py: 2
+                            }
+                        }}>
                             <Grid item xs={6} sm>
                                 <Stack alignItems={'flex-end'} spacing={1}>
                                     <Box
